@@ -1,0 +1,93 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/nx-cypress-migrate-bug/src",
+  "prefix": "nx-cypress-migrate-bug",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nx-cypress-migrate-bug",
+        "index": "apps/nx-cypress-migrate-bug/src/index.html",
+        "main": "apps/nx-cypress-migrate-bug/src/main.ts",
+        "polyfills": "apps/nx-cypress-migrate-bug/src/polyfills.ts",
+        "tsConfig": "apps/nx-cypress-migrate-bug/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/nx-cypress-migrate-bug/src/favicon.ico",
+          "apps/nx-cypress-migrate-bug/src/assets"
+        ],
+        "styles": ["apps/nx-cypress-migrate-bug/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/nx-cypress-migrate-bug/src/environments/environment.ts",
+              "with": "apps/nx-cypress-migrate-bug/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "nx-cypress-migrate-bug:build:production"
+        },
+        "development": {
+          "browserTarget": "nx-cypress-migrate-bug:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "nx-cypress-migrate-bug:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/nx-cypress-migrate-bug/**/*.ts",
+          "apps/nx-cypress-migrate-bug/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/nx-cypress-migrate-bug"],
+      "options": {
+        "jestConfig": "apps/nx-cypress-migrate-bug/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

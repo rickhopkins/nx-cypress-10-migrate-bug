@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "nx-cypress-migrate-bug": "apps/nx-cypress-migrate-bug",
+    "nx-cypress-migrate-bug-e2e": "apps/nx-cypress-migrate-bug-e2e",
+    "second-project": "apps/second-project",
+    "second-project-e2e": "apps/second-project-e2e"
+  }
+}
